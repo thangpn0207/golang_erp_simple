@@ -1,12 +1,9 @@
 package models
 
-import "gorm.io/gorm"
-
 // Inventory Model
 type Inventory struct {
-	gorm.Model
-	ID        uint    `gorm:"primaryKey"`
-	ProductID uint    `gorm:"not null"`
-	Quantity  int     `gorm:"default:0"`
-	Product   Product `gorm:"foreignKey:ProductID"`
+	ID        uint    `gorm:"primaryKey" json:"id"`
+	ProductID uint    `gorm:"not null" json:"product_id"`
+	Quantity  int     `gorm:"default:0" json:"quantity"`
+	Product   Product `gorm:"foreignKey:ProductID" json:"product"`
 }

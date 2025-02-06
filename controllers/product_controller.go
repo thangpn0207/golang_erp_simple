@@ -9,8 +9,10 @@ import (
 
 type ProductController struct{}
 type CreateProductRequest struct {
-	Name  string  `json:"name" binding:"required"`
-	Price float64 `json:"price" binding:"required"`
+	Name        string  `json:"name" binding:"required"`
+	Price       float64 `json:"price" binding:"required"`
+	Description string  `json:"description" binding:"required"`
+	StockLevel  int     `json:"stock_level" binding:"required"`
 }
 
 // Create Product
@@ -23,8 +25,10 @@ func (c *ProductController) CreateProduct(ctx *gin.Context) {
 	}
 
 	product := models.Product{
-		Name:  request.Name,
-		Price: request.Price,
+		Name:        request.Name,
+		Price:       request.Price,
+		Description: request.Description,
+		StockLevel:  request.StockLevel,
 	}
 	config.DB.Create(&product)
 
